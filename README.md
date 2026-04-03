@@ -1,0 +1,4 @@
+- Descripción: Es una "aplicacion" que muestra información en base a "txts" dados
+- Ignacio Valdivia 22.179.3579-9 @nchq7
+- Solo hay una clase Main con todo el codigo
+- Instrucciones de ejecucion: Tener los dos archivos txt en el proyecto y simplemente correrlo
