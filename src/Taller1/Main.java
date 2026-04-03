@@ -636,6 +636,28 @@ public class Main {
 				        
 					break;
 				case 3:
+					System.out.println("Usuario con mayor procrastinación: ");
+					String masProcrastinador = "";
+					int horasMasProcrastinador = 0;
+					for (int i = 0; i < contadorLogin; i++) {
+						
+						String usuarioActual = IDs[i];
+						int horasTemp = 0;
+						
+						for (int j = 0; j < contador; j++) {
+							if (IDact[j].equals(usuarioActual)) {
+								horasTemp += horas[j];
+								
+							}
+							
+						}
+						if(horasTemp > horasMasProcrastinador) {
+							masProcrastinador = usuarioActual;
+							horasMasProcrastinador = horasTemp;
+							
+						}
+					}
+					System.out.println(masProcrastinador + " con " + horasMasProcrastinador + " horas procrastinadas.");
 					
 					break;
 				case 4:
