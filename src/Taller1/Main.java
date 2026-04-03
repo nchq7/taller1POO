@@ -576,7 +576,64 @@ public class Main {
 					System.out.println("Actividad mas realizada: " + masRepetida + " (con "+maxHoras+" horas)\n");
 					break;
 				case 2:
+					System.out.println("Actividad mas realizada por cada usuario:");
 					
+					String[] Usuarios = new String[contadorLogin];
+				    String[] actividadUsuario = new String[contadorLogin];
+				    int[] horasUsuario = new int[contadorLogin];
+					
+				    for (int i = 0; i < contadorLogin; i++) { // este for es para CADA USUARIO
+				    	
+				    	String usuarioActual = IDs[i];
+				    	
+				    	String[] actividadesTemp = new String[contador];
+				    	int[] contadorActTemp = new int[contador];
+				    	int[] horasActTemp = new int[contador];
+				    	int cantidadActividadesTemp = 0;
+				    	
+				    	for (int j = 0; j < contador; j++) { // este for es para "recorrer" el archivo buscando el mismo nombre
+				    		if (IDact[j].equals(usuarioActual)) {
+				    			
+				    			String actActual = actividad[j];
+				                boolean existe = false;
+				                
+				                for (int k = 0; k < cantidadActividadesTemp; k++) { // acumula las actividades repetidas
+				                	if (actividadesTemp[k].equals(actActual)) {
+				                		contadorActTemp[k]++;
+				                		horasActTemp[k] += horas[j];
+				                		existe = true;
+				                		break;
+				                	}
+				                }
+				                if (!existe) {
+				                	actividadesTemp[cantidadActividadesTemp] = actActual;
+				                	contadorActTemp[cantidadActividadesTemp] = 1;
+				                	horasActTemp[cantidadActividadesTemp] = horas[j];
+				                	cantidadActividadesTemp++;
+				                }
+				                
+				    		}
+				    		
+				    	}
+				    	int maxTemp = 0; 
+				    	int horasMaxTemp = 0; 
+				    	String masRepetidaTemp = ""; 
+				    	for (int j = 0; j < cantidadActividadesTemp; j++) {
+				    		if (contadorActTemp[j] > maxTemp) {
+				    			maxTemp = contadorActTemp[j];
+				    			horasMaxTemp = horasActTemp[j];
+				    			masRepetidaTemp = actividadesTemp[j];
+				    		}
+				    	}
+				    	Usuarios[i] = usuarioActual;
+				    	actividadUsuario[i] = masRepetidaTemp;
+				    	horasUsuario[i] = horasMaxTemp;
+				    	
+				    } // termina el for i
+				    for (int i = 0; i < contadorLogin; i++) {
+				    	System.out.println("* " + Usuarios[i] + " -> " + actividadUsuario[i] + " -> con " + horasUsuario[i] + " horas registradas.");
+				    }
+				        
 					break;
 				case 3:
 					
@@ -598,4 +655,4 @@ public class Main {
 		
 	}
 
-}// hola
+}
